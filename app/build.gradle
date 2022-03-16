@@ -1,0 +1,96 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.truelogicchallenge"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    def appCompat = '1.2.0'
+    def material = '1.2.1'
+    def constraintLayout = '2.0.4'
+    def recyclerView = '1.1.0'
+    def glide = '4.11.0'
+    def retrofit = '2.9.0'
+    def lifeCycle = '2.2.0'
+    def room = '2.2.5'
+    def koin_version = '2.0.1'
+    def interceptor = '4.9.0'
+    def paging_version = "3.0.0-alpha12"
+
+
+    //General
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //Lifecycle/LiveData
+    //implementation "android.arch.lifecycle:extensions:$lifeCycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycle"
+
+    //Room
+    implementation "androidx.room:room-runtime:$room"
+    kapt "androidx.room:room-compiler:$room"
+    implementation "androidx.room:room-ktx:$room"
+
+    //Koin
+    implementation "androidx.fragment:fragment-ktx:1.2.0-alpha01"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifeCycle"
+
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-core-ext:$koin_version"
+
+    testImplementation 'junit:junit:4.+'
+    testImplementation "io.mockk:mockk:1.9.1"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1'
+    testImplementation "android.arch.core:core-testing:1.1.1"
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
